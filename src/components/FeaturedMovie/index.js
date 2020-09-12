@@ -3,6 +3,14 @@ import './index.css';
 
 const FeaturedMovie = ({item}) => {
 
+  const shortDescription = (descriptionText) => {
+    if(descriptionText.length > 350) {
+      return (descriptionText.slice(0, 250).concat('...'))
+    }
+
+    return descriptionText;
+  }
+
   let firstDate = new Date(item.first_air_date);
   let genres = item.genres.map((item) => item.name);
 
@@ -20,7 +28,7 @@ const FeaturedMovie = ({item}) => {
             <div className="featured--year">{firstDate.getFullYear()}</div>
             <div className="featured--seasons">{item.number_of_seasons} temporada{item.number_of_seasons > 1 ? 's' : ' '}</div>
           </div>
-          <div className="featured--description">{item.overview}</div>
+          <div className="featured--description">{shortDescription(item.overview)}</div>
           <div className="featured-buttons">
             <a href={`/watch/${item.id}`} className="featured--watchbutton">▶ Assistir</a>
             <a href={`/list/add/${item.id}`} className="featured--mylistbutton">+ Minha Lista</a>

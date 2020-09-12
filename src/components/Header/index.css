@@ -33,3 +33,8 @@ header {
   height: 100%;
   border-radius: 3px;
 }
+
+footer {
+  margin: 50px 0;
+  text-align: center;
+}
